@@ -10,7 +10,7 @@ const options = [
 ];
 
 const customStyles = {
-  control: (provided, state) => ({
+  control: (provided) => ({
     ...provided,
     width: '200px',
     height: '30px',
