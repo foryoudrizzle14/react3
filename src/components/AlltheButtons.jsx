@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
+
+
+// 버튼의 색상 값 정의
 const largeButtonColor = '#ff5050';
 const mediumButtonColor = '#ffcc33';
 const smallButtonColor = '#6699ff';
@@ -16,6 +19,8 @@ const glow = keyframes`
   }
 `;
 
+
+// 버튼 컴포넌트들을 styled-components로 구현
 const LargeButton = styled.button`
   display: inline-block;
   font-size: 1em;
@@ -83,9 +88,13 @@ const SmallButton = styled.button`
   }
 `;
 
+
+// 모든 버튼을 관리하는 컴포넌트
 function AlltheButtons() {
   const [buttonClicked, setButtonClicked] = useState(false);
 
+
+  // 버튼 클릭시 호출할 함수들
   const handleButtonClick = () => {
     setButtonClicked(!buttonClicked);
   };

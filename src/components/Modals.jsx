@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-
 function Modals() {
-  const [showModal1, setShowModal1] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
+  // 첫 번째 모달 상태 설정
+  const [outModal, setOutModal] = useState(false);
+  // 두 번째 모달 상태 설정
+  const [inModal, setInModal] = useState(false);
 
+  // 첫 번째 모달 닫기 핸들러
   const handleModal1Close = () => {
-    setShowModal1(false);
+    setOutModal(false);
   };
 
+  // 두 번째 모달 닫기 핸들러
   const handleModal2Close = () => {
-    setShowModal2(false);
+    setInModal(false);
   };
 
   return (
     <div>
-        <h1>Modals</h1>
+      <h1>Modals</h1>
+
       {/* 첫 번째 모달 */}
-      {showModal1 && (
+      {outModal && (
         <div
           style={{
             position: 'fixed',
@@ -31,22 +35,23 @@ function Modals() {
             justifyContent: 'center',
             alignItems: 'center',
           }}
-          onClick={handleModal1Close} // 모달 외부를 클릭하면 모달이 사라집니다.
+          onClick={handleModal1Close}
         >
           <div
             style={{
               backgroundColor: 'white',
               padding: 20,
             }}
-            onClick={(event) => event.stopPropagation()} // 모달 내부를 클릭하면 모달이 사라지지 않도록 합니다.
+            onClick={(event) => event.stopPropagation()}
           >
             <h2>외부를 클릭할시 모달이 닫힙니다.</h2>
+            <button onClick={handleModal1Close}>닫기</button> {/* 첫 번째 모달에 닫기 버튼 추가 */}
           </div>
         </div>
       )}
 
       {/* 두 번째 모달 */}
-      {showModal2 && (
+      {inModal && (
         <div
           style={{
             position: 'fixed',
@@ -65,7 +70,7 @@ function Modals() {
               backgroundColor: 'white',
               padding: 20,
             }}
-            onClick={(event) => event.stopPropagation()} // 모달 내부를 클릭하면 모달이 사라지지 않도록 합니다.
+            onClick={(event) => event.stopPropagation()}
           >
             <h2>두 번째 모달</h2>
             <button onClick={handleModal2Close}>닫기</button>
@@ -74,8 +79,8 @@ function Modals() {
       )}
 
       {/* 모달을 열기 위한 버튼들 */}
-      <Button onClick={() => setShowModal1(true)}>첫 번째 모달 열기</Button>
-      <Buttons onClick={() => setShowModal2(true)}>두 번째 모달 열기</Buttons>
+      <Button onClick={() => setOutModal(true)}>첫 번째 모달 열기</Button>
+      <Buttons onClick={() => setInModal(true)}>두 번째 모달 열기</Buttons> {/* 버튼 이름 오타 수정 */}
     </div>
   );
 }
